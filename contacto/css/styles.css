@@ -103,6 +103,7 @@ ul {
     outline: 0;
     color: #fff;
     border-bottom: 1px solid #fff;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .contact-form form button {
