@@ -16,7 +16,7 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="../css.css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link rel="stylesheet" href="Vista/_Plantilla/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-
+  
 </head>
 
 <body class="hold-transition sidebar-collapse layout-top-nav">
@@ -131,7 +131,7 @@
                                         onkeypress="return soloLetras(event)">
                                     </div>
                                     <div class="col-lg-6 form-group">
-                                      <label>Apellido Paterno (*):</label>
+                                      <label>Apellido Materno (*):</label>
                                       <input class="form-control" type="text" placeholder="Ingresar apellido materno"
                                         maxlength="50" id="txtapemat" name="txtapemat"
                                         onkeypress="return soloLetras(event)">
@@ -200,7 +200,8 @@
                                         <div class="col-md-8 form-group">
                                           <label>Empresa (*):</label>
                                           <input type="text" id="txt_empresa"
-                                            onkeypress="return soloNumerosyletras(event)" name="txt_empresa" maxlength="50"
+                                          name="txt_empresa" 
+                                            onkeypress="return soloNumerosyletras(event)" maxlength="50"
                                             placeholder="Ingresar datos de la empresa" class="form-control">
                                         </div>
                                       </div>
@@ -227,16 +228,18 @@
 
                                   <div class="col-md-12 form-group">
                                     <label>Tipo Documento (*):</label>
-                                    <select class="select2-danger select2" name="cmb_tipodocumento"
-                                      data-dropdown-css-class="select2-danger" id="cmb_tipodocumento"
+                                    <select class="select2-danger select2" 
+                                    id="cmb_tipodocumento" name="cmb_tipodocumento"
+                                      data-dropdown-css-class="select2-danger"
                                       style="width: 100%;">
                                     </select>
                                   </div>
                                   <div class="col-md-6 form-group" hidden="">
                                     <label>Nº Documento (*):</label>
                                     <input type="text" value="" class="form-control"
-                                      onkeypress="return soloNroDocumento(event)" id="txt_nrodocumentos" maxlength="20"
-                                      name="txt_nrodocumentos" placeholder="Ingrese nro del documento">
+                                      onkeypress="return soloNroDocumento(event)" id="txt_nrodocumentos"
+                                      name="txt_nrodocumentos" maxlength="20"
+                                      placeholder="Ingrese nro del documento">
                                   </div>
                                   <div class="col-md-12 form-group">
                                     <label>Nº Folios:</label>
@@ -249,6 +252,13 @@
                                       onkeypress="return soloLetras(event)" class="form-control" style='resize: none'
                                       maxlength="255" placeholder="Asunto del documento"></textarea>
                                   </div>
+
+                                  <!-- Boton de ejemplo -->
+                                  <div class="col-md-12 fom-group">
+                                    <button type="button"class="btn btn-block btn-success" onclick="Registro_tramiteExterno()">&nbsp;Enviar Tr&aacute;mite</button>
+                                  </div>
+                                  <br><br>
+
                                   <div class="col-md-12 form-group">
                                     <label for="txt_archivo">Adjuntar documento (pdf,docx,zip,jpg,png,rar,xlsx):</label>
                                     <div class="input-group">
@@ -280,7 +290,7 @@
                                     <input type="text" style="display: none;" id="txtformato" name="txtformato">
                                     <a style="cursor:pointer;color: white !important" type="button"
                                       class="btn btn-block btn-success" id="btn_subir"
-                                      onclick="registrar_tramite();">&nbsp;Enviar Tr&aacute;mite</a>
+                                      onclick="Registrar_tramiteExterno()">&nbsp;Enviar Tr&aacute;mite</a>
                                   </div>
 
                                 </div>
@@ -530,10 +540,18 @@
   <script src="Vista/_Plantilla/plugins/select2/js/select2.full.min.js"></script>
   <script src="Vista/js/sweetalert2.js"></script>
   <script src="Vista/js/console_tramite.js?rev=1605066919"></script>
-
+  <script type="text/javascript" src="vista/js/tramiteExterno.js?rev=<?php echo time();?>"></script>
 </body>
 
 </html>
+
+<script>
+  $(document).ready(function () {
+    listar_combo_tipoDocumento();
+  });
+</script>
+
+
 <script type="text/javascript">
   $(document).ready(function () {
     bsCustomFileInput.init();

@@ -19,6 +19,8 @@ function combo_tipodocumento_externo(){
 		}
 	})
 }
+
+
 function ValidacionInputRegistroTramite(dni,nombre,apepat,apemat,email,direccion,nrodocumento,folio,asunto,ruc,empresa,archivo){
 	Boolean($("#"+dni).val().length>0) ? $("#"+dni).removeClass('is-invalid').addClass("is-valid") : $("#"+dni).removeClass('is-valid').addClass("is-invalid"); 
 	Boolean($("#"+nombre).val().length>0) ? $("#"+nombre).removeClass('is-invalid').addClass("is-valid") : $("#"+nombre).removeClass('is-valid').addClass("is-invalid"); 
