@@ -86,11 +86,9 @@ function LimpiarCampos(){
   $("#txtcelular").val("");
   $("#txtemail").val("");
   $("#txt_direccion").val("");
-  $("#txt_representacion").val("");
   $("#txt_ruc").val("");
   $("#txt_empresa").val("");
   $("#txt_folios").val("");
   $("#txt_asunto").val("");
-
 
 }
