@@ -20,6 +20,24 @@ function listar_combo_tipoDocumento() {
 }
 
 
+function traer_codigo_seguimiento() {
+  $.ajax({
+    url: "controlador/tramiteExterno/controlador_traer_codigo_seguimiento.php",
+    type: "POST",
+  }).done(function (resp) {
+    //alert(resp);
+    var data = JSON.parse(resp);
+    if (data.length > 0) {
+      $("#txt_codigo_seg").val(data[0][0]);
+    }
+  });
+}
+
+
+
+
+
+
 function Registro_tramiteExterno(){
   var DNI = $("#txtdni").val();
   var nombre = $("#txtnombre").val();
@@ -35,8 +53,9 @@ function Registro_tramiteExterno(){
   var tipoDocumento = $("#cmb_tipodocumento").val();
   var folios = $("#txt_folios").val();
   var asunto = $("#txt_asunto").val();
+  var codigo_seg = $("#txt_codigo_seg").val();
 
-if(DNI.length==0 ||nombre.length==0 || apepat.length==0 || apemat.length== 0 || celular.length== 0 || email.length==0 || direccion.length== 0 || representacion.length== 0|| tipoDocumento.length== 0|| folios.length== 0|| asunto.length== 0){
+if(DNI.length==0 ||nombre.length==0 || apepat.length==0 || apemat.length== 0 || celular.length== 0 || email.length==0 || direccion.length== 0 || representacion.length== 0 || tipoDocumento.length== 0 || folios.length== 0 || asunto.length== 0 || codigo_seg.length== 0){
   return Swal.fire("Mensaje de advertencia", "Llene los campos vacios", "warning");
 }
 
@@ -57,7 +76,8 @@ $.ajax({
           empresa:empresa,
           tipoDocumento:tipoDocumento,
           folios:folios,
-          asunto:asunto
+          asunto:asunto,
+          codigo_seg:codigo_seg
        }
 }).done(function(resp){
   //alert(resp);
@@ -67,6 +87,7 @@ $.ajax({
              LimpiarCampos();
             $("#modal_registro").modal('hide');
             Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente", "success");
+            traer_codigo_seguimiento();
            }else{
            LimpiarCampos();
             Swal.fire("Mensaje de advertencia", "Ya existe en la base de datos", "warning");

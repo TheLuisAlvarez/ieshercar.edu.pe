@@ -21,8 +21,21 @@ class Modelo_tramiteExterno{
         }
     }
 
-    function Registrar_tramiteExterno($DNI,$nombre,$apepat,$apemat,$celular,$email,$direccion,$representacion,$ruc,$empresa,$tipoDocumento,$folios,$asunto){
-        $sql = "call SP_REGISTRAR_TRAMITE_EXTERNO('$DNI','$nombre','$apepat','$apemat','$celular','$email','$direccion','$representacion','$ruc','$empresa','$tipoDocumento','$folios','$asunto')";
+    function Codigo_seguimiento(){
+        $sql = "call SP_GENERAR_CODIGO_SEGUIMIENTO()";
+        $arreglo = array();
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                    $arreglo[] = $consulta_VU;
+                
+            }
+            return $arreglo;
+            $this->conexion->cerrar();
+        }
+    }
+
+    function Registrar_tramiteExterno($DNI,$nombre,$apepat,$apemat,$celular,$email,$direccion,$representacion,$ruc,$empresa,$tipoDocumento,$folios,$asunto,$codigo_seg){
+        $sql = "call SP_REGISTRAR_TRAMITE_EXTERNO('$DNI','$nombre','$apepat','$apemat','$celular','$email','$direccion','$representacion','$ruc','$empresa','$tipoDocumento','$folios','$asunto','$codigo_seg')";
         if ($consulta = $this->conexion->conexion->query($sql)) {
             if ($row = mysqli_fetch_array($consulta)) {
                     return $id= trim($row[0]);
@@ -31,6 +44,7 @@ class Modelo_tramiteExterno{
         }
     }
 
+    
 
 }
 ?>

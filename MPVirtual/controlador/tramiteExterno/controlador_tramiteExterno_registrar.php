@@ -15,6 +15,7 @@
     $tipoDocumento = htmlspecialchars($_POST['tipoDocumento'],ENT_QUOTES,'UTF-8'); 
     $folios = htmlspecialchars($_POST['folios'],ENT_QUOTES,'UTF-8'); 
     $asunto = htmlspecialchars($_POST['asunto'],ENT_QUOTES,'UTF-8'); 
-    $consulta = $MTE->Registrar_tramiteExterno($DNI,$nombre,$apepat,$apemat,$celular,$email,$direccion,$representacion,$ruc,$empresa,$tipoDocumento,$folios,$asunto);
+    $codigo_seg = htmlspecialchars($_POST['codigo_seg'],ENT_QUOTES,'UTF-8');
+    $consulta = $MTE->Registrar_tramiteExterno($DNI,$nombre,$apepat,$apemat,$celular,$email,$direccion,$representacion,$ruc,$empresa,$tipoDocumento,$folios,$asunto,$codigo_seg);
     echo $consulta;
 ?>

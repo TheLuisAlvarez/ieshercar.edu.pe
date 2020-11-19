@@ -234,12 +234,11 @@
                                       style="width: 100%;">
                                     </select>
                                   </div>
-                                  <div class="col-md-6 form-group" hidden="">
-                                    <label>Nº Documento (*):</label>
-                                    <input type="text" value="" class="form-control"
-                                      onkeypress="return soloNroDocumento(event)" id="txt_nrodocumentos"
-                                      name="txt_nrodocumentos" maxlength="20"
-                                      placeholder="Ingrese nro del documento">
+                                  <div class="col-md-6 form-group" hidden>
+                                    <label>Codigo de Seguimiento (*):</label>
+                                    <input type="text" value="" class="form-control" id="txt_codigo_seg"
+                                      name="txt_codigo_seg" maxlength="20"
+                                      placeholder="Codigo de Seguimiento">
                                   </div>
                                   <div class="col-md-12 form-group">
                                     <label>Nº Folios:</label>
@@ -548,6 +547,7 @@
 <script>
   $(document).ready(function () {
     listar_combo_tipoDocumento();
+    traer_codigo_seguimiento();
   });
 </script>
 
