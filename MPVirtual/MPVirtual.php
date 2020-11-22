@@ -45,7 +45,7 @@
             </li>
             <li class="nav-item">
               <!-- <a href="../../mesavirtual/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a> -->
-              <a href="http://localhost:80/mesavirtual/Login/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a>
+              <a href="http://localhost:8080/mesavirtual/Login/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a>
             </li>
           </ul>
         </div>
@@ -698,9 +698,7 @@
       }
     }
   });
-  $(".form-control").on('paste', function (e) {
-    e.preventDefault();
-  });
+
   var cbm_representacion = "";
   var porrepresentacion = document.getElementsByName("r1");
   for (var i = 0; i < porrepresentacion.length; i++) {
