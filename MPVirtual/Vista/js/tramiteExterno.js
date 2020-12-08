@@ -34,10 +34,6 @@ function traer_codigo_seguimiento() {
 }
 
 
-
-
-
-
 function Registro_tramiteExterno(){
   var DNI = $("#txtdni").val();
   var nombre = $("#txtnombre").val();
@@ -96,6 +92,146 @@ $.ajax({
     Swal.fire("Mensaje de error", "El registro no se pudo completar", "error");
   }
 })
+}
+
+
+function buscar_tramite_exterior() {
+  var codigo_seguimiento = $("#txt_codigo_seguimiento").val();
+  if (codigo_seguimiento.length==0) {
+      Boolean($("#txt_codigo_seguimiento").val().length>0) ? $("#txt_codigo_seguimiento").removeClass('is-invalid').addClass("is-valid") : $("#txt_codigo_seguimiento").removeClass('is-valid').addClass("is-invalid"); 
+      return Swal.fire("Mensaje de Advertencia","Falta Llenar datos","warning");
+  }
+  $("#btn_buscar").prop("disabled", true);
+  $('#txt_codigo_seguimiento').removeClass("is-invalid").removeClass("is-valid");
+  $.ajax({
+      url:'controlador/tramiteExterno/controlador_tramite_externo_buscar.php',
+      type:'POST',
+      data:{
+        codigo_seguimiento:codigo_seguimiento
+      }
+  })
+  .done(function(resp){
+      var data = JSON.parse(resp);
+      limpiarseguimiento();
+  
+      // alert(data[0][1]);
+
+      $("#btn_buscar").prop("disabled", false);
+      if (data.length > 0) {
+          document.getElementById('div_datostramite').style.display="block";
+          document.getElementById('div_buscartramite').style.display="none";
+          $("#lb_dni").html(data[0][0]);
+          $("#lb_datos").html(data[0][1]);
+          $("#lb_direccion").html(data[0][2]);
+          $("#lb_email").html(data[0][3]);
+          $("#lb_representacion").html(data[0][4]);
+          $("#lb_tipodocumento").html(data[0][5]);
+          $("#lb_asunto").html(data[0][6]);
+          $('#div_historial2').html("");
+          var cadena_seguimiento = "";
+          var cadena_seguimiento2 = "";
+                    cadena_seguimiento+='<div class="time-label">';
+                   cadena_seguimiento+=  ' <span class="bg-red">Fecha Inicio: '+data[0][7]+'</span>';
+                  cadena_seguimiento+=  '</div>';
+                  cadena_seguimiento+= ' <div>';
+                   cadena_seguimiento+= '  <i class="fas fa-university bg-blue"></i>';
+                    cadena_seguimiento+= ' <div class="timeline-item">';
+                     cadena_seguimiento+= '  <span class="time"><i class="fas fa-clock"></i> '+data[0][7]+'</span>';
+                      cadena_seguimiento+= ' <h3 class="timeline-header"> '+data[0][8]+'</h3>';
+                      cadena_seguimiento+= ' <div class="timeline-body">';
+                         cadena_seguimiento+=  'Su trámite ha sido recibido, será atendido o derivado a la oficina correspondiente en un plazo máximo de 2 día(s).';
+                    cadena_seguimiento+= '  </div>';
+                   cadena_seguimiento+=  ' </div>';
+                 cadena_seguimiento+= ' </div>';
+                 $('#div_historial2').append(cadena_seguimiento);
+                 detalle_tramite();
+      }else{
+          document.getElementById('div_buscartramite').style.display="block";
+          document.getElementById('div_datostramite').style.display="none";
+          Swal.fire("Mensaje de Advertencia","Lo sentimos, el <label>nro de documento</label> ingresado no se encuentra registrado en nuestra data","warning");
+      }
+  })
+}
+
+
+function detalle_tramite() {
+  var cod_seguimiento = $("#txt_codigo_seguimiento").val();
+
+  $.ajax({
+      url:'controlador/tramiteExterno/controlador_tramite_seguimiento_listar.php',
+      type:'POST',
+      data:{
+        cod_seguimiento:cod_seguimiento
+      }
+  })
+  .done(function(resp2){
+      // alert(resp2);
+      var data2 = JSON.parse(resp2);
+      if (data2.length > 0) {
+          var cadena_seguimiento = "";
+          for (var j = 0; j < data2.length; j++) {
+              
+              cadena_seguimiento += '<div>';
+              if (data2[j][6]=="DERIVADO") {
+                  cadena_seguimiento += '<i class="fas fa-reply-all bg-yellow"></i>';
+              }else{
+                  if (data2[j][8]=="RECHAZADO") {
+                      cadena_seguimiento += '<i class="fas fa-comments bg-danger"></i>';
+                  }else{
+                      if (data2[j][8]=="FINALIZADO") {
+                          cadena_seguimiento += '<i class="fas fa-comments bg-purple"></i>';
+                      }else{
+                          cadena_seguimiento += '<i class="fas fa-comments bg-success"></i>';
+                      }
+                  }
+              }
+                cadena_seguimiento += '<div class="timeline-item">';
+                  cadena_seguimiento += ' <span class="time"><i class="fas fa-clock"></i> '+data2[j][5]+'</span>';
+                  cadena_seguimiento += ' <h3 class="timeline-header"> '+data2[j][4]+'</h3>';
+                  cadena_seguimiento += ' <div class="timeline-body">';
+                  if (data2[j][6]=="DERIVADO") {
+                      cadena_seguimiento +=  ' Su trÃ¡mite ha sido derivado a <b>'+data2[j][0]+'</b>';
+                  }else{
+                      if (data2[j][8]=="RECHAZADO") {
+                        cadena_seguimiento +=  ' Su trÃ¡mite ha sido <b>'+data2[j][8]+' </b> en <b>'+data2[j][0]+'</b>';
+                      }else{
+                          //alert(data2[j][8]);
+                          if (data2[j][8]=="FINALIZADO") {
+                            cadena_seguimiento +=  ' Su trÃ¡mite ha <b>'+data2[j][8]+' </b> en <b>'+data2[j][0]+'</b>';
+                          }else{
+                              cadena_seguimiento +=  ' Su trÃ¡mite ha sido <b>'+data2[j][8]+' </b> en <b>'+data2[j][0]+'</b>, serÃ¡ atendido o derivado a la oficina correspondiente';
+                          }
+                      }
+                  }
+                  cadena_seguimiento += ' </div>';
+                  cadena_seguimiento += ' <div class="timeline-footer" style="padding: 10px;">';
+                    cadena_seguimiento += ' " '+data2[j][1]+' "';
+                 cadena_seguimiento += '  </div>';
+                cadena_seguimiento += ' </div>';
+              cadena_seguimiento += ' </div>';
+              cadena_seguimiento += '<div>';
+              cadena_seguimiento += '<i class="fas fa-clock bg-gray"></i>';
+            cadena_seguimiento += '</div>';
+          }
+           $('#div_historial').html(cadena_seguimiento);
+          //tercero();
+      }
+  })
+}
+
+
+function limpiarseguimiento() {
+  $("#lb_dni").html("");
+  $("#lb_datos").html("");
+  $("#lb_direccion").html("");
+  $("#lb_email").html("");
+  $("#lb_representacion").html("");
+  $("#lb_tipodocumento").html("");
+  $("#lb_nrodocumento").html("");
+  $("#lb_iddocumento").html("");
+  $("#lb_asunto").html("");
+  $('#div_historial').html("");
+  $('#div_historial2').html("");
 }
 
 

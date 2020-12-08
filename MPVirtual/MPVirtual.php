@@ -314,12 +314,12 @@
                               <div class="card-body">
                                 <form onsubmit="return false" autocomplete="false">
                                   <div class="row">
-                                    <div class="col-lg-4 form-group">
-                                      <label>Nº Documento:</label>
-                                      <input class="form-control" type="text" placeholder="Nro documento" maxlength="15"
-                                        id="txtnrodocumento" onkeypress="return soloNroDocumento(event)">
+                                    <div class="col-lg-8 form-group">
+                                      <label>Nº Seguimiento del tr&aacute;mite:</label>
+                                      <input class="form-control" type="text" placeholder="Nro de seguimiento del tr&aacute;mite" maxlength="15"
+                                        id="txt_codigo_seguimiento" onkeypress="return soloNroDocumento(event)">
                                     </div>
-                                    <div class="col-lg-4 form-group">
+                                    <!-- <div class="col-lg-4 form-group">
                                       <label>A&ntilde;o del documento</label>
                                       <select id="cbm_anio" style="text-align: center;width: 100%"
                                         class="select2 select2-danger" data-dropdown-css-class="select2-danger">
@@ -357,10 +357,10 @@
                                         <option>2031</option>
                                         <option>2032</option>
                                       </select>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-4 fom-group">
                                       <label>&nbsp;</label>
-                                      <button id="btn_buscar" onclick="buscar_orden_externo()"
+                                      <button id="btn_buscar" onclick="buscar_tramite_exterior()"
                                         class="btn btn-block bg-gradient-danger"><i class="fa fa-search"></i></button>
                                     </div>
                                   </div>
@@ -452,14 +452,6 @@
                                             <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">TIPO
                                               DOCUMENTO</td>
                                             <td style="width: 70%;" id="lb_tipodocumento"></td>
-                                          </tr>
-                                          <tr>
-                                            <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">NRO
-                                              DOCUMENTO</td>
-                                            <td style="width: 70%;">
-                                              <label id="lb_nrodocumento"></label>
-                                              <label hidden="" id="lb_iddocumento"></label>
-                                            </td>
                                           </tr>
                                           <tr>
                                             <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">ASUNTO
@@ -698,9 +690,9 @@
       }
     }
   });
-  $(".form-control").on('paste', function (e) {
-    e.preventDefault();
-  });
+  // $(".form-control").on('paste', function (e) {
+  //   e.preventDefault();
+  // });
   var cbm_representacion = "";
   var porrepresentacion = document.getElementsByName("r1");
   for (var i = 0; i < porrepresentacion.length; i++) {

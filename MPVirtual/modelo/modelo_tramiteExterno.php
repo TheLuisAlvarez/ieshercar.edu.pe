@@ -44,7 +44,31 @@ class Modelo_tramiteExterno{
         }
     }
 
+    function Buscar_Tramite_Seguimiento($cod_seguimiento){
+        $sql = "call SP_BUSCAR_TRAMITE_SEGUIMIENTO('$cod_seguimiento')";
+        $arreglo = array();
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                $arreglo[] = $consulta_VU;
     
+            }
+            return $arreglo;
+            $this->conexion->cerrar();
+        }
+    }
+
+    function Listar_Seguimiento_Tramite_Exterior($cod_seguimiento){
+        $sql = "call SP_LISTAR_SEGUIMIENTO_TRAMITE_EXTERIOR('$cod_seguimiento')";
+        $arreglo = array();
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            while ($consulta_VU = mysqli_fetch_array($consulta)) {
+                $arreglo[] = $consulta_VU;
+    
+            }
+            return $arreglo;
+            $this->conexion->cerrar();
+        }
+    }
 
 }
 ?>

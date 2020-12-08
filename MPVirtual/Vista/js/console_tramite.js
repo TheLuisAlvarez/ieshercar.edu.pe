@@ -1,24 +1,24 @@
-function combo_tipodocumento_externo(){
-	$.ajax({
-		url:'controlador/documento/controlador_combo_documento_listar.php',
-		type:'POST'
-	})
-	.done(function(resp){
-		var data = JSON.parse(resp);
+// function combo_tipodocumento_externo(){
+// 	$.ajax({
+// 		url:'controlador/documento/controlador_combo_documento_listar.php',
+// 		type:'POST'
+// 	})
+// 	.done(function(resp){
+// 		var data = JSON.parse(resp);
 
-		if (data.length > 0) {
-			var cadena = "";
-			for (var i = 0; i < data.length; i++) {
-				cadena += "<option value='"+data[i][0]+"'>"+data[i][1]+"</option>";
-			}
-			$("#cmb_tipodocumento").html(cadena);
-		}
-		else{
-			var cadena = "<option value=''>NO SE ENCONTRARON REGISTROS</option>";
-			$("#cmb_tipodocumento").html(cadena);
-		}
-	})
-}
+// 		if (data.length > 0) {
+// 			var cadena = "";
+// 			for (var i = 0; i < data.length; i++) {
+// 				cadena += "<option value='"+data[i][0]+"'>"+data[i][1]+"</option>";
+// 			}
+// 			$("#cmb_tipodocumento").html(cadena);
+// 		}
+// 		else{
+// 			var cadena = "<option value=''>NO SE ENCONTRARON REGISTROS</option>";
+// 			$("#cmb_tipodocumento").html(cadena);
+// 		}
+// 	})
+// }
 
 
 function ValidacionInputRegistroTramite(dni,nombre,apepat,apemat,email,direccion,nrodocumento,folio,asunto,ruc,empresa,archivo){
@@ -49,15 +49,15 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     }
 })
-function traer_idunico() {
-    $.ajax({
-        url:'controlador/documento/controlador_generar_codigo.php',
-        type:'POST'
-    })
-    .done(function(resp){
-        $("#postID").val(resp);
-    })
-}
+// function traer_idunico() {
+//     $.ajax({
+//         url:'controlador/documento/controlador_generar_codigo.php',
+//         type:'POST'
+//     })
+//     .done(function(resp){
+//         $("#postID").val(resp);
+//     })
+// }
 function validar_email(email) {
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(email) ? true : false;
@@ -1365,36 +1365,36 @@ function Generar_Reporte(){
 //==========================REGISTRAR DOCUMENTO INTERNO================================
 //=====================================================================================
 //=====================================================================================
-function traer_idunico_interno() {
-    $.ajax({
-        url:'../controlador/documento/controlador_generar_codigo.php',
-        type:'POST'
-    })
-    .done(function(resp){
-        $("#postID").val(resp);
-    })
-}
-function combo_tipodocumento_interno(){
-    $.ajax({
-        url:'../controlador/documento/controlador_combo_documento_listar.php',
-        type:'POST'
-    })
-    .done(function(resp){
-        var data = JSON.parse(resp);
+// function traer_idunico_interno() {
+//     $.ajax({
+//         url:'../controlador/documento/controlador_generar_codigo.php',
+//         type:'POST'
+//     })
+//     .done(function(resp){
+//         $("#postID").val(resp);
+//     })
+// }
+// function combo_tipodocumento_interno(){
+//     $.ajax({
+//         url:'../controlador/documento/controlador_combo_documento_listar.php',
+//         type:'POST'
+//     })
+//     .done(function(resp){
+//         var data = JSON.parse(resp);
 
-        if (data.length > 0) {
-            var cadena = "";
-            for (var i = 0; i < data.length; i++) {
-                cadena += "<option value='"+data[i][0]+"'>"+data[i][1]+"</option>";
-            }
-            $("#cmb_tipodocumento").html(cadena);
-        }
-        else{
-            var cadena = "<option value=''>NO SE ENCONTRARON REGISTROS</option>";
-            $("#cmb_tipodocumento").html(cadena);
-        }
-    })
-}
+//         if (data.length > 0) {
+//             var cadena = "";
+//             for (var i = 0; i < data.length; i++) {
+//                 cadena += "<option value='"+data[i][0]+"'>"+data[i][1]+"</option>";
+//             }
+//             $("#cmb_tipodocumento").html(cadena);
+//         }
+//         else{
+//             var cadena = "<option value=''>NO SE ENCONTRARON REGISTROS</option>";
+//             $("#cmb_tipodocumento").html(cadena);
+//         }
+//     })
+// }
 function registrar_tramite_interno() {
     var inicio = $("#txt_verificar").val();
     if (inicio == "Administrador" || inicio == "Secretario (a)") {
