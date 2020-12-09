@@ -31,34 +31,34 @@
           <span class="brand-text font-weight-light" style="font-weight: bold !important;">P&aacute;gina Principal</span>
         </a>
 
-        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        <!-- <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
+        </button> -->
 
-        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <!-- <div class="collapse navbar-collapse order-3 " id="navbarCollapse"> -->
           <!-- Left navbar links -->
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a class="nav-link" data-widget="pushmenu" href="../index.html" role="button"><i
                   class="fas fa-bars"></i></a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <!-- <a href="../../mesavirtual/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a> -->
               <a href="http://localhost:80/mesavirtual/Login/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a>
             </li>
           </ul>
-        </div>
+        <!-- </div> -->
 
         <!-- Right navbar links -->
-        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <!-- <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto"> -->
           <!-- Messages Dropdown Menu -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button"><i
                 class="fas fa-th-large"></i></a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </nav>
     <!-- /.navbar -->
@@ -72,12 +72,13 @@
             <div class="col-sm-6">
               <h1 class="m-0 text-dark"> Tr&aacute;mite Virtual <small></small></h1>
             </div><!-- /.col -->
-            <div class="col-sm-6">
+            <!-- <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item active" style="font-weight: bold;"><i class="far fa-file-word"></i>
                   Tr&aacute;mite</li>
-              </ol>
-            </div><!-- /.col -->
+              </ol> -->
+            <!-- </div> -->
+            <!-- /.col -->
           </div><!-- /.row -->
         </div><!-- /.container-fluid -->
       </div>
@@ -387,11 +388,11 @@
                                           <div class="col-sm-6">
                                           </div>
                                           <div class="col-sm-6">
-                                            <ol class="float-sm-right">
+                                            <!-- <ol class="float-sm-right">
                                               <button class="btn btn-danger btn-sm" style="width: 100%;"
                                                 onclick="Generar_Reporte()"><i class="fa fa-print"></i> &nbsp;Imprimir
                                                 Ticket</button>
-                                            </ol>
+                                            </ol> -->
                                             <ol class="float-sm-right">
                                               <button class="btn btn-success btn-sm" style="width: 100%;"
                                                 onclick="nueva_busqueda()"><i class="fa fa-search"></i> &nbsp;Nueva
@@ -406,32 +407,31 @@
                                         <table class="table" style="width: 100%;">
                                           <tr>
                                             <td
-                                              style="width: 100%;text-align: center;font-weight: bold;border-top: 2px solid black;background-color: #E4E4E4"
+                                              style="width: 100%;text-align: center;font-weight: bold;border-top: 2px solid black;background-color: #F4F6F9"
                                               colspan="2">
                                               DATOS DEL REMITENTE
                                             </td>
                                           </tr>
                                           <tr>
-                                            <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">DNI</td>
+                                            <td style="width: 30%;font-weight: bold;background-color: #F4F6F9">DNI</td>
                                             <td style="width: 70%;"><label id="lb_dni"></label></td>
                                           </tr>
                                           <tr>
-                                            <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">NOMBRES -
-                                              APELLIDOS</td>
+                                            <td style="width: 30%;font-weight: bold;background-color: #F4F6F9">NOMBRES Y APELLIDOS</td>
                                             <td style="width: 70%;" id="lb_datos"></td>
                                           </tr>
                                           <tr>
-                                            <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">
+                                            <td style="width: 30%;font-weight: bold;background-color: #F4F6F9">
                                               DIRECCI&Oacute;N</td>
                                             <td style="width: 70%;" id="lb_direccion"></td>
                                           </tr>
                                           <tr>
-                                            <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">E-MAIL
+                                            <td style="width: 30%;font-weight: bold;background-color: #F4F6F9">E-MAIL
                                             </td>
                                             <td style="width: 70%;" id="lb_email"></td>
                                           </tr>
                                           <tr>
-                                            <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">
+                                            <td style="width: 30%;font-weight: bold;background-color: #F4F6F9">
                                               REPRESENTACI&Oacute;N</td>
                                             <td style="width: 70%;" id="lb_representacion"></td>
                                           </tr>
@@ -443,18 +443,18 @@
                                         <table class="table" style="width: 100%;">
                                           <tr>
                                             <td
-                                              style="width: 100%;text-align: center;font-weight: bold;border-top: 2px solid black;background-color: #E4E4E4"
+                                              style="width: 100%;text-align: center;font-weight: bold;border-top: 2px solid black;background-color: #F4F6F9"
                                               colspan="2">
                                               DATOS DEL DOCUMENTO
                                             </td>
                                           </tr>
                                           <tr>
-                                            <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">TIPO
+                                            <td style="width: 30%;font-weight: bold;background-color: #F4F6F9">TIPO
                                               DOCUMENTO</td>
                                             <td style="width: 70%;" id="lb_tipodocumento"></td>
                                           </tr>
                                           <tr>
-                                            <td style="width: 30%;font-weight: bold;background-color: #E4E4E4">ASUNTO
+                                            <td style="width: 30%;font-weight: bold;background-color: #F4F6F9">ASUNTO
                                             </td>
                                             <td style="width: 70%;" rowspan="3" id="lb_asunto"></td>
                                           </tr>
@@ -662,7 +662,7 @@
 </style>
 <script type="text/javascript">
   $("#cbm_anio").val("2020").trigger("change");
-  traer_idunico();
+  //traer_idunico();
   $('input[type="file"]').on('change', function () {
     var ext = $(this).val().split('.').pop();
     if ($(this).val() != '') {

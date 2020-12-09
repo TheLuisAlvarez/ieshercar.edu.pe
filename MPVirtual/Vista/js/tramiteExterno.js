@@ -11,6 +11,7 @@ function listar_combo_tipoDocumento() {
         cadena +=
           "<option value='" + data[i][0] + "'>" + data[i][1] + "</option>";
       }
+      cadena += "<option value='9'> Otro </option>";
       $("#cmb_tipodocumento").html(cadena);
     } else {
       cadena += "<option value=''>NO SE ENCONTRARON REGISTROS</option>";
@@ -136,15 +137,15 @@ function buscar_tramite_exterior() {
                   cadena_seguimiento+= ' <div>';
                    cadena_seguimiento+= '  <i class="fas fa-university bg-blue"></i>';
                     cadena_seguimiento+= ' <div class="timeline-item">';
-                     cadena_seguimiento+= '  <span class="time"><i class="fas fa-clock"></i> '+data[0][7]+'</span>';
-                      cadena_seguimiento+= ' <h3 class="timeline-header"> '+data[0][8]+'</h3>';
+                     cadena_seguimiento+= '  <span class="time"><i class="fas fa-clock"></i> '+data[0][8]+'</span>';
+                      cadena_seguimiento+= ' <h3 class="timeline-header"> '+data[0][7]+'</h3>';
                       cadena_seguimiento+= ' <div class="timeline-body">';
                          cadena_seguimiento+=  'Su trámite ha sido recibido, será atendido o derivado a la oficina correspondiente en un plazo máximo de 2 día(s).';
                     cadena_seguimiento+= '  </div>';
                    cadena_seguimiento+=  ' </div>';
                  cadena_seguimiento+= ' </div>';
                  $('#div_historial2').append(cadena_seguimiento);
-                 detalle_tramite();
+                detalle_tramite();
       }else{
           document.getElementById('div_buscartramite').style.display="block";
           document.getElementById('div_datostramite').style.display="none";
@@ -172,13 +173,13 @@ function detalle_tramite() {
           for (var j = 0; j < data2.length; j++) {
               
               cadena_seguimiento += '<div>';
-              if (data2[j][6]=="DERIVADO") {
+              if (data2[j][4]=="1") {
                   cadena_seguimiento += '<i class="fas fa-reply-all bg-yellow"></i>';
               }else{
-                  if (data2[j][8]=="RECHAZADO") {
+                  if (data2[j][4]=="4") {
                       cadena_seguimiento += '<i class="fas fa-comments bg-danger"></i>';
                   }else{
-                      if (data2[j][8]=="FINALIZADO") {
+                      if (data2[j][4]=="5") {
                           cadena_seguimiento += '<i class="fas fa-comments bg-purple"></i>';
                       }else{
                           cadena_seguimiento += '<i class="fas fa-comments bg-success"></i>';
@@ -186,26 +187,26 @@ function detalle_tramite() {
                   }
               }
                 cadena_seguimiento += '<div class="timeline-item">';
-                  cadena_seguimiento += ' <span class="time"><i class="fas fa-clock"></i> '+data2[j][5]+'</span>';
-                  cadena_seguimiento += ' <h3 class="timeline-header"> '+data2[j][4]+'</h3>';
+                  cadena_seguimiento += ' <span class="time"><i class="fas fa-clock"></i> '+data2[j][2]+'</span>';
+                  cadena_seguimiento += ' <h3 class="timeline-header"> '+data2[j][1]+'</h3>';
                   cadena_seguimiento += ' <div class="timeline-body">';
-                  if (data2[j][6]=="DERIVADO") {
-                      cadena_seguimiento +=  ' Su trÃ¡mite ha sido derivado a <b>'+data2[j][0]+'</b>';
+                  if (data2[j][4]=="1") {
+                      cadena_seguimiento +=  ' Su tr&aacute;mite ha sido derivado a <b>'+data2[j][0]+'</b>';
                   }else{
-                      if (data2[j][8]=="RECHAZADO") {
-                        cadena_seguimiento +=  ' Su trÃ¡mite ha sido <b>'+data2[j][8]+' </b> en <b>'+data2[j][0]+'</b>';
+                      if (data2[j][4]=="4") {
+                        cadena_seguimiento +=  ' Su tr&aacute;mite ha sido <b> RECHAZADO </b> en <b>'+data2[j][0]+'</b>';
                       }else{
                           //alert(data2[j][8]);
-                          if (data2[j][8]=="FINALIZADO") {
-                            cadena_seguimiento +=  ' Su trÃ¡mite ha <b>'+data2[j][8]+' </b> en <b>'+data2[j][0]+'</b>';
+                          if (data2[j][4]=="5") {
+                            cadena_seguimiento +=  ' Su tr&aacute;mite ha <b> FINALIZADO </b> en <b>'+data2[j][0]+'</b>';
                           }else{
-                              cadena_seguimiento +=  ' Su trÃ¡mite ha sido <b>'+data2[j][8]+' </b> en <b>'+data2[j][0]+'</b>, serÃ¡ atendido o derivado a la oficina correspondiente';
+                              cadena_seguimiento +=  ' Su tr&aacute;mite ha sido <b> ACEPTADO </b> en <b>'+data2[j][0]+'</b>, ser&aacute; atendido o derivado a la oficina correspondiente';
                           }
                       }
                   }
                   cadena_seguimiento += ' </div>';
                   cadena_seguimiento += ' <div class="timeline-footer" style="padding: 10px;">';
-                    cadena_seguimiento += ' " '+data2[j][1]+' "';
+                    if(data2[j][3]==null){cadena_seguimiento += ' " "'}else{cadena_seguimiento += ' " '+data2[j][3]+' "'};
                  cadena_seguimiento += '  </div>';
                 cadena_seguimiento += ' </div>';
               cadena_seguimiento += ' </div>';
@@ -217,6 +218,12 @@ function detalle_tramite() {
           //tercero();
       }
   })
+}
+
+
+function nueva_busqueda() {
+  document.getElementById('div_buscartramite').style.display="block";
+  document.getElementById('div_datostramite').style.display="none";
 }
 
 
