@@ -36,6 +36,9 @@ function traer_codigo_seguimiento() {
 
 
 function Registro_tramiteExterno(){
+  
+  EnviarCorreoTramiteRegistro();
+
   var DNI = $("#txtdni").val();
   var nombre = $("#txtnombre").val();
   var apepat = $("#txtapepat").val();
@@ -81,10 +84,11 @@ $.ajax({
   if(resp>0){
            if(resp==1){
              //listar_remitente();
-             LimpiarCampos();
-            $("#modal_registro").modal('hide');
-            Swal.fire("Mensaje de confirmacion", "Datos guardados correctamente", "success");
-            traer_codigo_seguimiento();
+              LimpiarCampos();
+              //EnviarCorreoTramiteRegistro();
+              $("#modal_registro").modal('hide');
+              Swal.fire("Mensaje de Confirmaci\u00F3n", "Datos correctamente registrados,<b> nuevo documento registrado</b><br><b>Nro Seguimiento:<b><label style='color:#9B0000;'>&nbsp;" + codigo_seg + "</label><br><b>Se Envio el nro de seguimiento al correo brindado</b>", "success");
+              traer_codigo_seguimiento();
            }else{
            LimpiarCampos();
             Swal.fire("Mensaje de advertencia", "Ya existe en la base de datos", "warning");
@@ -93,6 +97,27 @@ $.ajax({
     Swal.fire("Mensaje de error", "El registro no se pudo completar", "error");
   }
 })
+}
+
+
+function EnviarCorreoTramiteRegistro() {
+  var email = $("#txtemail").val();
+  var tipoDocumento = $("#cmb_tipodocumento").val();
+  var asunto = $("#txt_asunto").val();
+  var codigo_seg = $("#txt_codigo_seg").val();
+  $.ajax({
+      url:'controlador/tramiteExterno/controlador_enviar_mensaje_exterior.php',
+      type:'POST',
+      data:{
+          codigoSeguimiento:codigo_seg,
+          tipoDocumento:tipoDocumento,
+          asunto:asunto,
+          email:email
+      }
+  })
+  .done(function(resp){
+    alert(resp);
+  })
 }
 
 
@@ -225,6 +250,8 @@ function nueva_busqueda() {
   document.getElementById('div_buscartramite').style.display="block";
   document.getElementById('div_datostramite').style.display="none";
 }
+
+
 
 
 function limpiarseguimiento() {
