@@ -9,8 +9,8 @@
     // require '../../modelo/modelo_tramiteExterno.php';
     // $MTE = new Modelo_tramiteExterno();
     $codigoSeguimiento = htmlspecialchars($_POST['codigoSeguimiento'],ENT_QUOTES,'UTF-8');
-    //$tipoDocumento = htmlspecialchars($_POST['tipoDocumento'],ENT_QUOTES,'UTF-8');
-    //$asunto = htmlspecialchars($_POST['asunto'],ENT_QUOTES,'UTF-8');
+    $tipoDocumento = htmlspecialchars($_POST['tipoDocumento'],ENT_QUOTES,'UTF-8');
+    $asunto = htmlspecialchars($_POST['asunto'],ENT_QUOTES,'UTF-8');
     $email = htmlspecialchars($_POST['email'],ENT_QUOTES,'UTF-8');
 
     // $consulta = $MTE->Enviar_Mensaje_Exterior($email,$contra);
@@ -54,9 +54,12 @@
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML
             $mail->Subject = 'Nuevo tramite Registrado';
-            $mail->Body    = 'Su codigo de seguimiento es: <b>'.$codigoSeguimiento.'</b>'
-            '<br> Tipo de tr&aacute;mite: <b>'.$tipoDocumento.'</b>'
-            '<br> Asunto: <b>'.$asunto.'</b>'
+            $mail->Body    = 'Su codigo de seguimiento es: <b>'.
+            $codigoSeguimiento'</b>'.
+            '<br> Tipo de tr&aacute;mite: <b>'.
+            $tipoDocumento'</b>'.
+            '<br> Asunto: <b>'.
+            $asunto'</b>'.
             '<br> Su trámite ha sido recibido, será atendido o derivado a la oficina correspondiente en un plazo máximo de 2 día(s).';
             //$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
