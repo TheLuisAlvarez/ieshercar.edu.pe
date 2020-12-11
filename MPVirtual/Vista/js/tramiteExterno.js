@@ -99,10 +99,10 @@ $.ajax({
 })
 }
 
-
 function EnviarCorreoTramiteRegistro() {
   var email = $("#txtemail").val();
-  var tipoDocumento = $("#cmb_tipodocumento").val();
+  var IdTipoDocumento = document.getElementById("cmb_tipodocumento");
+  var tipoDocumento = IdTipoDocumento.options[IdTipoDocumento.selectedIndex].text;
   var asunto = $("#txt_asunto").val();
   var codigo_seg = $("#txt_codigo_seg").val();
   $.ajax({
