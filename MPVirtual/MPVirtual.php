@@ -44,8 +44,8 @@
                   class="fas fa-bars"></i></a>
             </li> -->
             <li class="nav-item">
-              <!-- <a href="../../mesavirtual/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a> -->
-              <a href="http://localhost:80/mesavirtual/Login/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a>
+              <!-- <a href="../mesavirtual/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a> -->
+              <a href="../mesavirtual/index.php" class="nav-link"><i class="fa fa-user"></i> &nbsp;Ingresar al Sistema</a>
             </li>
           </ul>
         <!-- </div> -->
