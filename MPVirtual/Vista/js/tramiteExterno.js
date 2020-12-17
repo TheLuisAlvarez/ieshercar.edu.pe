@@ -116,7 +116,7 @@ function EnviarCorreoTramiteRegistro() {
       }
   })
   .done(function(resp){
-    alert(resp);
+    //alert(resp);
   })
 }
 
