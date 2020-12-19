@@ -14,7 +14,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="Vista/_Plantilla/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
-  <link href="../css.css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- <link href="../css.css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet"> -->
   <link rel="stylesheet" href="Vista/_Plantilla/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   
 </head>
@@ -90,8 +90,7 @@
                 <div class="card-header  d-flex p-0">
                   <h3 class="card-title p-3">Tr&aacute;mite</h3>
                   <ul class="nav nav-pills ml-auto p-2">
-                    <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Nuevo
-                        Tr&aacute;mite</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#tab_1"  onclick="cambiarNuevoTramite()" data-toggle="tab">Nuevo Tr&aacute;mite</a></li>
                     <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Consultar
                         Tr&aacute;mite</a></li>
                   </ul>
@@ -147,8 +146,8 @@
                                       <label>Email (*):</label>
                                       <input class="form-control" onkeypress="return soloNumerosyletras(event)"
                                         type="text" placeholder="Ingresar email" maxlength="250" id="txtemail"
-                                        name="txtemail"> <label for="" id="correoOK_editar" style="color:red"></label>
-                        <input type="text" id="validar_correo_editar" hidden>
+                                        name="txtemail"> <label for="" id="correoOK" style="color:red"></label>
+                                      <input type="text" id="validar_correo" hidden>
                                     </div>
                                     <div class="col-lg-12 form-group">
                                       <label>Direcci&oacute;n (*):</label>
@@ -733,7 +732,6 @@
     $("#txt_representacion").val("Persona Jurídica");
   });
   
-  combo_tipodocumento_externo();
   opcion_verificar();
   function opcion_verificar() {
     if (document.getElementById('checkaceptar').checked == false) {
@@ -844,12 +842,12 @@ document.getElementById('txtemail').addEventListener('input', function() {
     emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i; //asdasd21321@gmail.com
     if (emailRegex.test(campo.value)) {
         $(this).css("border", "");
-        $("#correoOK_editar").html("");
-        $("#validar_correo_editar").val("correcto");
+        $("#correoOK").html("");
+        $("#validar_correo").val("correcto");
     } else {
         $(this).css("border", "1px solid red");
-        $("#correoOK_editar").html("Correo Incorrecto");
-        $("#validar_correo_editar").val("incorrecto");
+        $("#correoOK").html("Correo Incorrecto");
+        $("#validar_correo").val("incorrecto");
     }
 });
 </script>

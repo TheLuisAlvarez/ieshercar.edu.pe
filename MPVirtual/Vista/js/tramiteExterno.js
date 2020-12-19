@@ -34,14 +34,16 @@ function traer_codigo_seguimiento() {
   });
 }
 
-function ValidacionInputRegistroTramite(dni,nombre,apepat,apemat,email,direccion,folio,asunto,ruc,empresa,archivo){
-	Boolean($("#"+dni).val().length>0) ? $("#"+dni).removeClass('is-invalid').addClass("is-valid") : $("#"+dni).removeClass('is-valid').addClass("is-invalid"); 
+
+function ValidacionInputRegistroTramite(dni,nombre,apepat,apemat,celular,email,direccion,folio,asunto,ruc,empresa,archivo){
+	Boolean($("#"+dni).val().length>0 && $("#"+dni).val().length==8) ? $("#"+dni).removeClass('is-invalid').addClass("is-valid") : $("#"+dni).removeClass('is-valid').addClass("is-invalid"); 
 	Boolean($("#"+nombre).val().length>0) ? $("#"+nombre).removeClass('is-invalid').addClass("is-valid") : $("#"+nombre).removeClass('is-valid').addClass("is-invalid"); 
 	Boolean($("#"+apepat).val().length>0) ? $("#"+apepat).removeClass('is-invalid').addClass("is-valid") : $("#"+apepat).removeClass('is-valid').addClass("is-invalid"); 
-	Boolean($("#"+apemat).val().length>0) ? $("#"+apemat).removeClass('is-invalid').addClass("is-valid") : $("#"+apemat).removeClass('is-valid').addClass("is-invalid"); 
-  Boolean($("#"+email).val().length>0) ? $("#"+email).removeClass('is-invalid').addClass("is-valid") : $("#"+email).removeClass('is-valid').addClass("is-invalid"); 
+  Boolean($("#"+apemat).val().length>0) ? $("#"+apemat).removeClass('is-invalid').addClass("is-valid") : $("#"+apemat).removeClass('is-valid').addClass("is-invalid"); 
+  Boolean($("#"+celular).val().length>0) ? $("#"+celular).removeClass('is-invalid').addClass("is-valid") : $("#"+celular).removeClass('is-valid').addClass("is-invalid"); 
+  // Boolean($("#"+email).val().length>0) ? $("#"+email).removeClass('is-invalid').addClass("is-valid") : $("#"+email).removeClass('is-valid').addClass("is-invalid"); 
   Boolean($("#"+direccion).val().length>0) ? $("#"+direccion).removeClass('is-invalid').addClass("is-valid") : $("#"+direccion).removeClass('is-valid').addClass("is-invalid"); 
-  //Boolean($("#"+folio).val().length>0) ? $("#"+folio).removeClass('is-invalid').addClass("is-valid") : $("#"+folio).removeClass('is-valid').addClass("is-invalid"); 
+  // Boolean($("#"+folio).val().length>0) ? $("#"+folio).removeClass('is-invalid').addClass("is-valid") : $("#"+folio).removeClass('is-valid').addClass("is-invalid"); 
   Boolean($("#"+asunto).val().length>0) ? $("#"+asunto).removeClass('is-invalid').addClass("is-valid") : $("#"+asunto).removeClass('is-valid').addClass("is-invalid"); 
   Boolean($("#"+ruc).val().length>0) ? $("#"+ruc).removeClass('is-invalid').addClass("is-valid") : $("#"+ruc).removeClass('is-valid').addClass("is-invalid"); 
   Boolean($("#"+empresa).val().length>0) ? $("#"+empresa).removeClass('is-invalid').addClass("is-valid") : $("#"+empresa).removeClass('is-valid').addClass("is-invalid"); 
@@ -68,11 +70,50 @@ function Registro_tramiteExterno(){
   var asunto = $("#txt_asunto").val();
   var codigo_seg = $("#txt_codigo_seg").val();
 
-  ValidacionInputRegistroTramite('txtdni','txtnombre','txtapepat','txtapemat','txtemail','txt_direccion','','txt_asunto','txt_ruc','txt_empresa','');
+  var validaremail =$("#validar_correo").val();
+
+  ValidacionInputRegistroTramite('txtdni','txtnombre','txtapepat','txtapemat','txtcelular','txtemail','txt_direccion','','txt_asunto','txt_ruc','txt_empresa','');
 
   if(DNI.length==0 ||nombre.length==0 || apepat.length==0 || apemat.length== 0 || celular.length== 0 || email.length==0 || direccion.length== 0 || representacion.length== 0 || tipoDocumento.length== 0 || folios.length== 0 || asunto.length== 0 || codigo_seg.length== 0){
-  return Swal.fire("Mensaje de advertencia", "Llene los campos vacios", "warning");
+    return Swal.fire("Mensaje de advertencia", "Por favor <b>llene los campos vacios (*)</b>", "warning");
   }
+
+    if(DNI.length < 8) {
+        $('#txtdni').focus();
+        $("#txtdni").removeClass('is-valid').addClass("is-invalid");
+        return Swal.fire("Mensaje de Advertencia","El campo <b>DNI</b>  debe tener como m&iacute;nimo 8 d&iacute;gitos","warning");  
+        
+    }
+
+    if(celular.length < 9) {
+      $('#txtcelular').focus();
+      $("#txtcelular").removeClass('is-valid').addClass("is-invalid");
+      return Swal.fire("Mensaje de Advertencia","El campo <b>CELULAR</b>  debe tener como m&iacute;nimo 9 d&iacute;gitos","warning");  
+    }
+
+
+    else{
+        $("#txtdni").removeClass('is-invalid').addClass("is-valid");
+    }
+
+    if (representacion == "Persona Jurídica") {
+        if (ruc.length==0 || empresa.length==0) {
+            return Swal.fire("Mensaje de Advertencia","Por favor <b>llene los campos vacios (*)</b>","warning");
+        }
+        if(ruc.length < 11) {
+          $('#txt_ruc').focus();
+          $("#txt_ruc").removeClass('is-valid').addClass("is-invalid");
+          return Swal.fire("Mensaje de Advertencia","El campo <b>RUC</b>  debe tener como m&iacute;nimo 11 d&iacute;gitos","warning");  
+          
+        }
+    }
+    if(validaremail == "incorrecto"){
+      return Swal.fire(
+        "Mensaje De Advertencia",
+        "El formato de email es incorrecto, ingrese un formato valido",
+        "warning"
+      );
+    }
 
 $.ajax({
   "url":"controlador/tramiteExterno/controlador_tramiteExterno_registrar.php",
@@ -102,14 +143,28 @@ $.ajax({
               LimpiarCampos();
               //EnviarCorreoTramiteRegistro();
               $("#modal_registro").modal('hide');
-              Swal.fire("Mensaje de Confirmaci\u00F3n", "Datos correctamente registrados,<b> nuevo documento registrado</b><br><b>Nro Seguimiento:<b><label style='color:#9B0000;'>&nbsp;" + codigo_seg + "</label><br><b>Se Envio el nro de seguimiento al correo brindado</b>", "success");
-              traer_codigo_seguimiento();
+              Swal.fire("Mensaje de Confirmaci\u00F3n", "Datos correctamente registrados,<b> nuevo documento registrado</b><br><b>Nro Seguimiento:<b><label style='color:#9B0000;'>&nbsp;" + codigo_seg + "</label><br><b>Se Envio el nro de seguimiento al correo brindado</b>", "success")
+              .then ( ( value ) =>  {
+                $('.form-control').removeClass("is-invalid").removeClass("is-valid");
+                $('.form-control').val("");
+                document.getElementById("form_registro_tramite").reset();
+                document.getElementById('div_juridico').style.display = 'none';
+                traer_codigo_seguimiento();
+                listar_combo_tipoDocumento()
+                // $("#btn_subir").addClass("disabled");
+                //EnviarMensajeCorreoRegistro(resp,txt_nrodocumentos,nombre_tipo,txtemail);
+            });
+
+              
+              document.getElementById("form_registro_tramite").reset();
+              document.getElementById('div_juridico').style.display = 'none';
            }else{
-           LimpiarCampos();
+            LimpiarCampos();
             Swal.fire("Mensaje de advertencia", "Ya existe en la base de datos", "warning");
            }
   }else{
     Swal.fire("Mensaje de error", "El registro no se pudo completar", "error");
+    traer_codigo_seguimiento();
   }
 })
 }
@@ -261,10 +316,16 @@ function detalle_tramite() {
   })
 }
 
+function cambiarNuevoTramite(){
+  nueva_busqueda();
+  limpiarseguimiento();
+  LimpiarCampos();
+}
 
 function nueva_busqueda() {
   document.getElementById('div_buscartramite').style.display="block";
   document.getElementById('div_datostramite').style.display="none";
+  $("#txt_codigo_seguimiento").val("");
 }
 
 
@@ -277,8 +338,6 @@ function limpiarseguimiento() {
   $("#lb_email").html("");
   $("#lb_representacion").html("");
   $("#lb_tipodocumento").html("");
-  $("#lb_nrodocumento").html("");
-  $("#lb_iddocumento").html("");
   $("#lb_asunto").html("");
   $('#div_historial').html("");
   $('#div_historial2').html("");
