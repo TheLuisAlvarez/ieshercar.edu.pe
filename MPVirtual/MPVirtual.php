@@ -147,7 +147,8 @@
                                       <label>Email (*):</label>
                                       <input class="form-control" onkeypress="return soloNumerosyletras(event)"
                                         type="text" placeholder="Ingresar email" maxlength="250" id="txtemail"
-                                        name="txtemail">
+                                        name="txtemail"> <label for="" id="correoOK_editar" style="color:red"></label>
+                        <input type="text" id="validar_correo_editar" hidden>
                                     </div>
                                     <div class="col-lg-12 form-group">
                                       <label>Direcci&oacute;n (*):</label>
@@ -837,3 +838,18 @@
     </div>
   </div>
 </div>
+<script>
+document.getElementById('txtemail').addEventListener('input', function() {
+    campo = event.target;
+    emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i; //asdasd21321@gmail.com
+    if (emailRegex.test(campo.value)) {
+        $(this).css("border", "");
+        $("#correoOK_editar").html("");
+        $("#validar_correo_editar").val("correcto");
+    } else {
+        $(this).css("border", "1px solid red");
+        $("#correoOK_editar").html("Correo Incorrecto");
+        $("#validar_correo_editar").val("incorrecto");
+    }
+});
+</script>
