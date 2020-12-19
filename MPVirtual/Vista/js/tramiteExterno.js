@@ -34,6 +34,19 @@ function traer_codigo_seguimiento() {
   });
 }
 
+function ValidacionInputRegistroTramite(dni,nombre,apepat,apemat,email,direccion,folio,asunto,ruc,empresa,archivo){
+	Boolean($("#"+dni).val().length>0) ? $("#"+dni).removeClass('is-invalid').addClass("is-valid") : $("#"+dni).removeClass('is-valid').addClass("is-invalid"); 
+	Boolean($("#"+nombre).val().length>0) ? $("#"+nombre).removeClass('is-invalid').addClass("is-valid") : $("#"+nombre).removeClass('is-valid').addClass("is-invalid"); 
+	Boolean($("#"+apepat).val().length>0) ? $("#"+apepat).removeClass('is-invalid').addClass("is-valid") : $("#"+apepat).removeClass('is-valid').addClass("is-invalid"); 
+	Boolean($("#"+apemat).val().length>0) ? $("#"+apemat).removeClass('is-invalid').addClass("is-valid") : $("#"+apemat).removeClass('is-valid').addClass("is-invalid"); 
+  Boolean($("#"+email).val().length>0) ? $("#"+email).removeClass('is-invalid').addClass("is-valid") : $("#"+email).removeClass('is-valid').addClass("is-invalid"); 
+  Boolean($("#"+direccion).val().length>0) ? $("#"+direccion).removeClass('is-invalid').addClass("is-valid") : $("#"+direccion).removeClass('is-valid').addClass("is-invalid"); 
+  //Boolean($("#"+folio).val().length>0) ? $("#"+folio).removeClass('is-invalid').addClass("is-valid") : $("#"+folio).removeClass('is-valid').addClass("is-invalid"); 
+  Boolean($("#"+asunto).val().length>0) ? $("#"+asunto).removeClass('is-invalid').addClass("is-valid") : $("#"+asunto).removeClass('is-valid').addClass("is-invalid"); 
+  Boolean($("#"+ruc).val().length>0) ? $("#"+ruc).removeClass('is-invalid').addClass("is-valid") : $("#"+ruc).removeClass('is-valid').addClass("is-invalid"); 
+  Boolean($("#"+empresa).val().length>0) ? $("#"+empresa).removeClass('is-invalid').addClass("is-valid") : $("#"+empresa).removeClass('is-valid').addClass("is-invalid"); 
+  //Boolean($("#"+archivo).val().length>0) ? $("#"+archivo).removeClass('is-invalid').addClass("is-valid") : $("#"+archivo).removeClass('is-valid').addClass("is-invalid");
+}
 
 function Registro_tramiteExterno(){
   
@@ -55,9 +68,11 @@ function Registro_tramiteExterno(){
   var asunto = $("#txt_asunto").val();
   var codigo_seg = $("#txt_codigo_seg").val();
 
-if(DNI.length==0 ||nombre.length==0 || apepat.length==0 || apemat.length== 0 || celular.length== 0 || email.length==0 || direccion.length== 0 || representacion.length== 0 || tipoDocumento.length== 0 || folios.length== 0 || asunto.length== 0 || codigo_seg.length== 0){
+  ValidacionInputRegistroTramite('txtdni','txtnombre','txtapepat','txtapemat','txtemail','txt_direccion','','txt_asunto','txt_ruc','txt_empresa','');
+
+  if(DNI.length==0 ||nombre.length==0 || apepat.length==0 || apemat.length== 0 || celular.length== 0 || email.length==0 || direccion.length== 0 || representacion.length== 0 || tipoDocumento.length== 0 || folios.length== 0 || asunto.length== 0 || codigo_seg.length== 0){
   return Swal.fire("Mensaje de advertencia", "Llene los campos vacios", "warning");
-}
+  }
 
 $.ajax({
   "url":"controlador/tramiteExterno/controlador_tramiteExterno_registrar.php",
@@ -119,6 +134,7 @@ function EnviarCorreoTramiteRegistro() {
     //alert(resp);
   })
 }
+
 
 
 function buscar_tramite_exterior() {
