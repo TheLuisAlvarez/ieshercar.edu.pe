@@ -52,7 +52,7 @@ function ValidacionInputRegistroTramite(dni,nombre,apepat,apemat,celular,email,d
 
 function Registro_tramiteExterno(){
   
-  EnviarCorreoTramiteRegistro();
+  
 
   var DNI = $("#txtdni").val();
   var nombre = $("#txtnombre").val();
@@ -151,8 +151,8 @@ $.ajax({
                 document.getElementById('div_juridico').style.display = 'none';
                 traer_codigo_seguimiento();
                 listar_combo_tipoDocumento()
+                EnviarCorreoTramiteRegistro();
                 // $("#btn_subir").addClass("disabled");
-                //EnviarMensajeCorreoRegistro(resp,txt_nrodocumentos,nombre_tipo,txtemail);
             });
 
               
