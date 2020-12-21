@@ -115,6 +115,8 @@ function Registro_tramiteExterno(){
       );
     }
 
+    EnviarCorreoTramiteRegistro();
+
 $.ajax({
   "url":"controlador/tramiteExterno/controlador_tramiteExterno_registrar.php",
        type:'POST',
@@ -141,7 +143,7 @@ $.ajax({
            if(resp==1){
              //listar_remitente();
               LimpiarCampos();
-              //EnviarCorreoTramiteRegistro();
+              EnviarCorreoTramiteRegistro();
               $("#modal_registro").modal('hide');
               Swal.fire("Mensaje de Confirmaci\u00F3n", "Datos correctamente registrados,<b> nuevo documento registrado</b><br><b>Nro Seguimiento:<b><label style='color:#9B0000;'>&nbsp;" + codigo_seg + "</label><br><b>Se Envio el nro de seguimiento al correo brindado</b>", "success")
               .then ( ( value ) =>  {
@@ -151,7 +153,7 @@ $.ajax({
                 document.getElementById('div_juridico').style.display = 'none';
                 traer_codigo_seguimiento();
                 listar_combo_tipoDocumento()
-                EnviarCorreoTramiteRegistro();
+
                 // $("#btn_subir").addClass("disabled");
             });
 
