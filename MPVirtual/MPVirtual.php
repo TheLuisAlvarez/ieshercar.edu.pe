@@ -260,14 +260,14 @@
                                   <br><br> -->
 
                                   <div class="col-md-12 form-group">
-                                    <label for="txt_archivo">Adjuntar documento (pdf,docx,zip,jpg,png,rar,xlsx):</label>
-                                    <div class="input-group">
-                                      <div class="custom-file">
-                                        <input type="file" class="custom-file-input form-control-file" accept=".pdf,.PDF,.docx,.zip,.jpg,.png,.jpeg,.rar,.xls,xlsx" id="txt_archivo" name="txt_archivo">
-                                        <label class="custom-file-label" id="lb_archivo" for="txt_archivo">Seleccionar Archivo</label> 
-                                      </div>
-                                    </div>
-                                  </div>
+                                  <label for="txt_archivo">Adjuntar documento (pdf,docx,zip,jpg,png,rar,xlsx):</label>
+                                  <!-- <div class="input-group"> -->
+                                    <!-- <div class="custom-file"> -->
+                                      <input type="file" accept=".pdf,.PDF,.docx,.zip,.jpg,.png,.jpeg,.rar,.xls,xlsx" class="form-control-file" id="txt_archivo" name="txt_archivo">
+                                      <!-- <label class="custom-file-label" id="lb_archivo" for="txt_archivo">Seleccionar Archivo</label> -->
+                                    <!-- </div> -->
+                                  <!-- </div> -->
+                                </div>
                                   <div class="col-md-12">
                                     <div class="form-group clearfix">
                                       <div class="icheck-warning d-inline" style="">
@@ -525,8 +525,8 @@
   <!-- jQuery -->
   <!-- <script src="Vista/_Plantilla/plugins/jquery/jquery.min.js"></script> -->
   <!-- Bootstrap 4 -->
-  <!-- <script src="Vista/_Plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="Vista/_Plantilla/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> -->
+ <!-- <script src="Vista/_Plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>  -->
+  <!-- <script src="Vista/_Plantilla/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>  -->
 
   <script src="Vista/_Plantilla/dist/js/adminlte.min.js"></script>
   
