@@ -139,9 +139,9 @@ function Registro_tramiteExterno(){
     form_data.append("codigo_seg", codigo_seg);
 
 $.ajax({
-  "url":"controlador/tramiteExterno/controlador_tramiteExterno_registrar.php",
+      url:'controlador/tramiteExterno/controlador_tramiteExterno_registrar.php',
       type:'POST',
-      data:FormData,
+      data:formData,
       contentType:false,
       processData:false,
 }).done(function(resp){

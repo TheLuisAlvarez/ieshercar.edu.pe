@@ -37,13 +37,12 @@ class Modelo_tramiteExterno{
     function Registrar_tramiteExterno($DNI,$nombre,$apepat,$apemat,$celular,$email,$direccion,$representacion,$ruc,$empresa,$tipoDocumento,$folios,$asunto,$codigo_seg,$nombre_archivo){
         $sql = "call SP_REGISTRAR_TRAMITE_EXTERNO('$DNI','$nombre','$apepat','$apemat','$celular','$email','$direccion','$representacion','$ruc','$empresa','$tipoDocumento','$folios','$asunto','$codigo_seg','$nombre_archivo')";
         
-        if ($resultado = $this->conexion->conexion->query($sql)) {
-           $id_retornado  = mysqli_insert_id($this->conexion->conexion);
-                return 1;
-            }else {
-                return 0;
+        if ($consulta = $this->conexion->conexion->query($sql)) {
+            if ($row = mysqli_fetch_array($consulta)) {
+                    return $id= trim($row[0]);
             }
             $this->conexion->cerrar();
+        }
     }
 
     function Buscar_Tramite_Seguimiento($cod_seguimiento){
