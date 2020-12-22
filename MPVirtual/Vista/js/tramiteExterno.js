@@ -153,7 +153,7 @@ $.ajax({
 // return false;
 
 }).done(function(resp){
-  alert(resp);
+  // alert(resp);
   if(resp>0){
            if(resp==1){
              //listar_remitente();
