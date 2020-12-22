@@ -261,12 +261,12 @@
 
                                   <div class="col-md-12 form-group">
                                     <label for="txt_archivo">Adjuntar documento (pdf,docx,zip,jpg,png,rar,xlsx):</label>
-                                    <!-- <div class="input-group"> -->
-                                      <!-- <div class="custom-file"> -->
-                                        <input type="file" class="form-control-file" accept=".pdf,.PDF,.docx,.zip,.jpg,.png,.jpeg,.rar,.xls,xlsx" id="txt_archivo" name="txt_archivo">
-                                        <!-- <label class="custom-file-label" id="lb_archivo" for="txt_archivo">Seleccionar Archivo</label> -->
-                                      <!-- </div> -->
-                                    <!-- </div> -->
+                                    <div class="input-group">
+                                      <div class="custom-file">
+                                        <input type="file" class="custom-file-input form-control-file" accept=".pdf,.PDF,.docx,.zip,.jpg,.png,.jpeg,.rar,.xls,xlsx" id="txt_archivo" name="txt_archivo">
+                                        <label class="custom-file-label" id="lb_archivo" for="txt_archivo">Seleccionar Archivo</label> 
+                                      </div>
+                                    </div>
                                   </div>
                                   <div class="col-md-12">
                                     <div class="form-group clearfix">
