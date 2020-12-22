@@ -23,7 +23,7 @@
 
     if(is_array($_FILES) && count($_FILES)>0){
 
-        if(move_uploaded_file($_FILES["doc_archivo"]["tmp_name"],"tramites/".$nombre_archivo){
+        if(move_uploaded_file($_FILES["doc_archivo"]["tmp_name"],"tramites/".$nombre_archivo)){
             $nombre_archivo = 'tramites/'.$nombre_archivo;
 
             $consulta = $MTE->Registrar_tramiteExterno($DNI,$nombre,$apepat,$apemat,$celular,$email,$direccion,$representacion,$ruc,$empresa,$tipoDocumento,$folios,$asunto,$codigo_seg,$nombre_archivo);
@@ -33,9 +33,13 @@
         }else{
             echo 0;
         }
-    
     }else{
         echo 0;
     }
+
+
+    
+    
+
 
 ?>
