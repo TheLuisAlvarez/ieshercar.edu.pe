@@ -120,7 +120,7 @@ function Registro_tramiteExterno(){
     EnviarCorreoTramiteRegistro();
 
     var form_data = new FormData();
-    form_data.append("archivo", $('#txt_archivo')[0].files[0]);
+    form_data.append("doc_archivo", $('#txt_archivo')[0].files[0]);
     form_data.append("nombre_archivo", nombre_archivo);
 
     form_data.append("DNI", DNI);
