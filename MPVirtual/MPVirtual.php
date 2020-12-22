@@ -254,17 +254,17 @@
                                   </div>
 
                                   <!-- Boton de ejemplo -->
-                                  <div class="col-md-12 fom-group">
+                                  <!-- <div class="col-md-12 fom-group">
                                     <button type="button"class="btn btn-block btn-success" onclick="Registro_tramiteExterno()">&nbsp;Enviar Tr&aacute;mite</button>
                                   </div>
-                                  <br><br>
+                                  <br><br> -->
 
                                   <div class="col-md-12 form-group">
                                     <label for="txt_archivo">Adjuntar documento (pdf,docx,zip,jpg,png,rar,xlsx):</label>
                                     <div class="input-group">
                                       <div class="custom-file">
                                         <input type="file" accept=".pdf,.PDF,.docx,.zip,.jpg,.png,.jpeg,.rar,.xls,xlsx"
-                                          class="custom-file-input form-control" id="txt_archivo" name="txt_archivo">
+                                          class="custom-file-input form-control-file" id="txt_archivo" name="txt_archivo">
                                         <label class="custom-file-label" id="lb_archivo" for="txt_archivo">Seleccionar
                                           Archivo</label>
                                       </div>
@@ -290,7 +290,7 @@
                                     <input type="text" style="display: none;" id="txtformato" name="txtformato">
                                     <a style="cursor:pointer;color: white !important" type="button"
                                       class="btn btn-block btn-success" id="btn_subir"
-                                      onclick="Registrar_tramiteExterno()">&nbsp;Enviar Tr&aacute;mite</a>
+                                      onclick="Registro_tramiteExterno()">&nbsp;Enviar Tr&aacute;mite</a>
                                   </div>
 
                                 </div>

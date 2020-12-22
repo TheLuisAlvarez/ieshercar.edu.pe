@@ -8,7 +8,7 @@
 		public function __construct(){
 		    $this->servidor = "localhost";
 			$this->usuario = "root";
-			$this->contrasena = "123/*Hola";
+			$this->contrasena = "123/*Hola;
 			$this->basedatos = "bd_mesavirtual";
 		}
 		function conectar(){

@@ -52,8 +52,6 @@ function ValidacionInputRegistroTramite(dni,nombre,apepat,apemat,celular,email,d
 
 function Registro_tramiteExterno(){
   
-  
-
   var DNI = $("#txtdni").val();
   var nombre = $("#txtnombre").val();
   var apepat = $("#txtapepat").val();
@@ -69,6 +67,10 @@ function Registro_tramiteExterno(){
   var folios = $("#txt_folios").val();
   var asunto = $("#txt_asunto").val();
   var codigo_seg = $("#txt_codigo_seg").val();
+
+  var archivo = $("#txt_archivo").val();
+  var extension = archivo.split('.').pop();
+  var nombre_archivo = codigo_seg + "." + extension;
 
   var validaremail =$("#validar_correo").val();
 
@@ -117,26 +119,31 @@ function Registro_tramiteExterno(){
 
     EnviarCorreoTramiteRegistro();
 
+    var form_data = new FormData();
+    form_data.append("archivo", $('#txt_archivo')[0].files[0]);
+    form_data.append("nombre_archivo", nombre_archivo);
+
+    form_data.append("DNI", DNI);
+    form_data.append("nombre", nombre);
+    form_data.append("apepat", apepat);
+    form_data.append("apemat", apemat);
+    form_data.append("celular", celular);
+    form_data.append("email", email);
+    form_data.append("direccion", direccion);
+    form_data.append("representacion", representacion);
+    form_data.append("ruc", ruc);
+    form_data.append("empresa", empresa);
+    form_data.append("tipoDocumento", tipoDocumento);
+    form_data.append("folios", folios);
+    form_data.append("asunto", asunto);
+    form_data.append("codigo_seg", codigo_seg);
+
 $.ajax({
   "url":"controlador/tramiteExterno/controlador_tramiteExterno_registrar.php",
-       type:'POST',
-       data:{
-          DNI: DNI,
-          nombre:nombre,
-          apepat:apepat,
-          apemat:apemat,
-          //sexo:sexo,
-          celular:celular,
-          email:email,
-          direccion:direccion,
-          representacion:representacion,
-          ruc:ruc,
-          empresa:empresa,
-          tipoDocumento:tipoDocumento,
-          folios:folios,
-          asunto:asunto,
-          codigo_seg:codigo_seg
-       }
+      type:'POST',
+      data:FormData,
+      contentType:false,
+      processData:false,
 }).done(function(resp){
   //alert(resp);
   if(resp>0){
