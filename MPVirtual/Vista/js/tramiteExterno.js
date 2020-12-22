@@ -143,47 +143,47 @@ $.ajax({
       type:'POST',
       data:form_data,
       contentType:false,
-      processData:false,
-      success: function(respuesta){
-        if(respuesta !=0){
-            Swal.fire('Mensaje De Confirmacion',"Se subio el archivo con exito","success");
-        }
-    }
-});
-return false;
+      processData:false
+//       success: function(respuesta){
+//         if(respuesta !=0){
+//             Swal.fire('Mensaje De Confirmacion',"Se subio el archivo con exito","success");
+//         }
+//     }
+// });
+// return false;
 
-// }).done(function(resp){
-//   //alert(resp);
-//   if(resp>0){
-//            if(resp==1){
-//              //listar_remitente();
-//               LimpiarCampos();
-//               EnviarCorreoTramiteRegistro();
-//               $("#modal_registro").modal('hide');
-//               Swal.fire("Mensaje de Confirmaci\u00F3n", "Datos correctamente registrados,<b> nuevo documento registrado</b><br><b>Nro Seguimiento:<b><label style='color:#9B0000;'>&nbsp;" + codigo_seg + "</label><br><b>Se Envio el nro de seguimiento al correo brindado</b>", "success")
-//               .then ( ( value ) =>  {
-//                 $('.form-control').removeClass("is-invalid").removeClass("is-valid");
-//                 $('.form-control').val("");
-//                 document.getElementById("form_registro_tramite").reset();
-//                 document.getElementById('div_juridico').style.display = 'none';
-//                 traer_codigo_seguimiento();
-//                 listar_combo_tipoDocumento()
+}).done(function(resp){
+  alert(resp);
+  if(resp>0){
+           if(resp==1){
+             //listar_remitente();
+              LimpiarCampos();
+              EnviarCorreoTramiteRegistro();
+              $("#modal_registro").modal('hide');
+              Swal.fire("Mensaje de Confirmaci\u00F3n", "Datos correctamente registrados,<b> nuevo documento registrado</b><br><b>Nro Seguimiento:<b><label style='color:#9B0000;'>&nbsp;" + codigo_seg + "</label><br><b>Se Envio el nro de seguimiento al correo brindado</b>", "success")
+              .then ( ( value ) =>  {
+                $('.form-control').removeClass("is-invalid").removeClass("is-valid");
+                $('.form-control').val("");
+                document.getElementById("form_registro_tramite").reset();
+                document.getElementById('div_juridico').style.display = 'none';
+                traer_codigo_seguimiento();
+                listar_combo_tipoDocumento()
 
-//                 // $("#btn_subir").addClass("disabled");
-//             });
+                // $("#btn_subir").addClass("disabled");
+            });
 
               
-//               document.getElementById("form_registro_tramite").reset();
-//               document.getElementById('div_juridico').style.display = 'none';
-//            }else{
-//             LimpiarCampos();
-//             Swal.fire("Mensaje de advertencia", "Ya existe en la base de datos", "warning");
-//            }
-//   }else{
-//     Swal.fire("Mensaje de error", "El registro no se pudo completar", "error");
-//     traer_codigo_seguimiento();
-//   }
-// })
+              document.getElementById("form_registro_tramite").reset();
+              document.getElementById('div_juridico').style.display = 'none';
+           }else{
+            LimpiarCampos();
+            Swal.fire("Mensaje de advertencia", "Ya existe en la base de datos", "warning");
+           }
+  }else{
+    Swal.fire("Mensaje de error", "El registro no se pudo completar", "error");
+    traer_codigo_seguimiento();
+  }
+})
 }
 
 function EnviarCorreoTramiteRegistro() {
