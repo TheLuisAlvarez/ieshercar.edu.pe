@@ -518,11 +518,15 @@
 
   <!-- REQUIRED SCRIPTS -->
 
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
   <!-- jQuery -->
-  <script src="Vista/_Plantilla/plugins/jquery/jquery.min.js"></script>
+  <!-- <script src="Vista/_Plantilla/plugins/jquery/jquery.min.js"></script> -->
   <!-- Bootstrap 4 -->
-  <script src="Vista/_Plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="Vista/_Plantilla/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+  <!-- <script src="Vista/_Plantilla/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="Vista/_Plantilla/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script> -->
 
   <script src="Vista/_Plantilla/dist/js/adminlte.min.js"></script>
   
@@ -542,12 +546,12 @@
 </script>
 
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   $(document).ready(function () {
     bsCustomFileInput.init();
     //buscar_orden_externo();
   });
-</script>
+</script> -->
 <style type="text/css">
   a,
   h3,
