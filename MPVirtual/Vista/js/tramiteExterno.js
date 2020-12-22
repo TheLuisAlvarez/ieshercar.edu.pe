@@ -141,7 +141,7 @@ function Registro_tramiteExterno(){
 $.ajax({
       url:'controlador/tramiteExterno/controlador_tramiteExterno_registrar.php',
       type:'POST',
-      data:formData,
+      data:form_data,
       contentType:false,
       processData:false,
 }).done(function(resp){
